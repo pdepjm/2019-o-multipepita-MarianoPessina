@@ -54,21 +54,27 @@ object manzana {
 }
 
 object mijo {
-	var estado = 0
-	// 1 es mojado, 0 es seco
+	var estado = mojado
 	method mojarse(){
-		estado = 1
+		estado = mojado
 	}
 	method secarse(){
-		estado = 0
+		estado = seco
 	}
 	method energiaQueOtorga(){
-		if (estado == 1){
-		return 15
-		}
-		else{
-		return 20
-		}
+		return estado.energiaPorEstado()
 	}
 }
+object mojado{
+	method energiaPorEstado(){
+		return 15
+	}
+}
+object seco{
+	method energiaPorEstado(){
+		return 20
+	}
+	
+}
+
 
