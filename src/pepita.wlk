@@ -31,7 +31,14 @@ object pepita {
 		self.comer(alpiste)
 		self.volar(5)
 	}
-	
+	method haceLoQueQuieras(){
+		if (self.estaCansada()){
+			self.comer(alpiste)
+		}
+		if (self.estaFeliz()){
+			self.volar(8)
+		}		
+	}
 	
 }
 
@@ -54,7 +61,7 @@ object manzana {
 }
 
 object mijo {
-	var estado = mojado
+	var estado = seco // arranca seco, lo defino así porque quiero
 	method mojarse(){
 		estado = mojado
 	}
@@ -73,8 +80,58 @@ object mojado{
 object seco{
 	method energiaPorEstado(){
 		return 20
+	}	
+}
+
+object canelon{
+	var estadoSalsa = sinSalsa
+	var estadoQueso = sinQueso
+	
+	method ponerSalsa(){
+		estadoSalsa = conSalsa
+	}
+	method ponerQueso(){
+		estadoQueso = conQueso
+	}
+	method sacarSalsa(){
+		estadoSalsa = sinSalsa
+	}
+	method sacarQueso(){
+		estadoQueso = sinQueso
+	}
+	method energiaQueOtorga(){
+		return 20 + estadoSalsa.energiaPorEstado() + estadoQueso.energiaPorEstado()
 	}
 	
 }
 
+object sinSalsa{
+	method energiaPorEstado(){
+		return 0
+	}
+}
+object sinQueso{
+	method energiaPorEstado(){
+		return 0
+	}
+}
+object conSalsa{
+	method energiaPorEstado(){
+		return 5
+	}
+}
+object conQueso{
+	method energiaPorEstado(){
+		return 7
+	}
+}
+
+object roque{
+	method entrenar() {//preferiría que se llame entrenarAPepita
+		pepita.volar(10)
+		pepita.comer(alpiste)
+		pepita.volar(5)
+		pepita.haceLoQueQuieras()
+	}
+}
 
